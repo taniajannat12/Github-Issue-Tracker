@@ -190,7 +190,7 @@ const showdetail=(id)=>{
 
           <div class="modal-action">
             <form method="dialog">
-              <button class="btn btn-primary">Got it!</button>
+              <button class="btn btn-primary">Close</button>
             </form>
           </div>
         </div>
