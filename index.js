@@ -6,7 +6,7 @@ document.getElementById('sign').addEventListener('click',function(){
     if(NAME=='admin' && password=='admin123')
     {
         alert('success')
-        window.location.assign('/home.html')
+        window.location.assign('home.html')
     }
     else{
         alert('failed')
