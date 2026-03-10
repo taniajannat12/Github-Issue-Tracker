@@ -1,6 +1,4 @@
 let allData=[];
-
-
 const managespinner=(status)=>{
   if(status==true){
     document.getElementById('spinner').classList.remove('hidden')
@@ -12,10 +10,6 @@ const managespinner=(status)=>{
   }
 
 }
-
-
-
-
 
 
 const tracker=()=>{
@@ -31,13 +25,9 @@ const tracker=()=>{
 }
 
 
-
-
 const Search=()=>{
 const search=document.getElementById('search')
 const searches=search.value
-
-
 
 if(searches){
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searches}`)
@@ -49,26 +39,11 @@ else{
 }}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 const display=(issues)=>{
-
-
   const count=document.getElementById('count')
   if(count){
     count.innerText=`${issues.length}`
   }
-
 
     const trackers=document.getElementById('trackers')
     trackers.innerHTML='';
@@ -149,8 +124,6 @@ const filterissue=(status)=>{
 }
 
 
-
-
 const showdetail=(id)=>{
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
   .then(res=>res.json())
@@ -198,11 +171,6 @@ const showdetail=(id)=>{
     modalbox.showModal();
   })
 }
-
-
-
-
-
 tracker();
 
 
