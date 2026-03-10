@@ -9,6 +9,37 @@ const tracker=()=>{
       display(allData)})
 }
 
+
+
+
+const Search=()=>{
+const search=document.getElementById('search')
+const searches=search.value
+
+
+
+if(searches){
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searches}`)
+  .then((res)=>res.json())
+  .then((data)=>{display(data.data);
+})}
+else{
+  display(allData)
+}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const display=(issues)=>{
 
 
@@ -89,10 +120,6 @@ const filterissue=(status)=>{
  
   }
 }
-
-
-
-
 
 
 
