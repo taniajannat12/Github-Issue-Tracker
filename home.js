@@ -84,6 +84,12 @@ let border='';
      border='border-purple-500 border-5';
   }
        const card=document.createElement('div')
+
+      card.onclick=()=>{
+        showdetail(issue.id)
+
+      }
+       card.className='cursor-pointer';
         card.innerHTML=`
 <div class="card bg-base-100 shadow-sm border ${border} p-6 rounded-2xl w-full max-w-md pt-5 mt-9">
   
@@ -145,6 +151,53 @@ const filterissue=(status)=>{
 
 
 
+const showdetail=(id)=>{
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
+  .then(res=>res.json())
+  .then(data=>{
+    const issue=data.data
+    const modalbox=document.getElementById('my_modal_1')
+    modalbox.innerHTML=`
+  <div class="modal-box w-11/12 max-w-2xl">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          
+          <div class="flex items-center gap-3 mb-4">
+             <div class="p-2 bg-green-50 rounded-full">
+                <img class="w-6 h-6" src="assets/Open-Status.png" alt="Status">
+             </div>
+             <span class="badge badge-error badge-outline bg-red-50 text-red-500 font-bold px-4 py-3 border-none">${issue.priority}</span>
+          </div>
+
+          <h3 class="font-bold text-2xl text-blue-600 mb-2">${issue.title}</h3>
+          <p class="text-gray-600 leading-relaxed mb-6">${issue.description}</p>
+          
+          <div class="flex gap-2 mb-6">
+            <div class="badge badge-outline border-red-200 text-red-500 flex gap-2 items-center px-3 py-3 bg-red-50 font-semibold text-xs">
+              <i class="fa-solid fa-circle-dot"></i> BUG
+            </div>
+            <div class="badge badge-outline border-yellow-200 text-yellow-600 flex gap-2 items-center px-3 py-3 bg-yellow-50 font-semibold text-xs">
+              <i class="fa-solid fa-handshake"></i> HELP WANTED
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 pt-4 text-gray-400 text-sm flex justify-between">
+            
+           
+            <p>Status: <span class="text-green-600 font-bold uppercase">${issue.status}</span></p>
+          </div>
+
+          <div class="modal-action">
+            <form method="dialog">
+              <button class="btn btn-primary">Got it!</button>
+            </form>
+          </div>
+        </div>
+    `
+    modalbox.showModal();
+  })
+}
 
 
 
