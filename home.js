@@ -73,15 +73,15 @@ const display=(issues)=>{
     const trackers=document.getElementById('trackers')
     trackers.innerHTML='';
  const gridDiv = document.createElement('div')
- gridDiv.className='grid grid-cols-4 gap-5'
+ gridDiv.className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'
     for(let issue of issues){
 let border='';
       
   if(issue.status.toLowerCase()=='open'){
-     border='border-green-500 border-5';
+     border='border-t-green-500 border-t-5';
   }
   else{
-     border='border-purple-500 border-5';
+     border='border-t-purple-500 border-t-5';
   }
        const card=document.createElement('div')
 
@@ -104,7 +104,7 @@ let border='';
     <h2 class="text-xl font-bold hover:text-blue-600 cursor-pointer transition-colors">
      ${issue.title}
     </h2>
-    <p class="text-gray-500 text-sm leading-relaxed">
+    <p class="text-gray-500 text-sm leading-relaxed line-clamp-1">
     ${issue.description}
     </p>
 
