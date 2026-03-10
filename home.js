@@ -1,12 +1,33 @@
 let allData=[];
 
 
+const managespinner=(status)=>{
+  if(status==true){
+    document.getElementById('spinner').classList.remove('hidden')
+
+  }
+  else{
+     document.getElementById('spinner').classList.add('hidden')
+
+  }
+
+}
+
+
+
+
+
+
 const tracker=()=>{
+  managespinner(true);
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
     .then((res)=>res.json())
     .then(data=>{
       allData=data.data;
-      display(allData)})
+      display(allData)
+     managespinner(false)})
+    
+     
 }
 
 
